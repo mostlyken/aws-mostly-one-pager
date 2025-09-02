@@ -1,12 +1,10 @@
 # AWS and MOSTLY AI
 
-
-
 ## Contents
 
 1. [Introduction](#introduction)
     - [Why MOSTLY AI?](#why-mostly-ai)
-    - [The power of partnership](#the-power-of-partnership)
+    - [The Power of Partnership](#the-power-of-partnership)
 2. [Concepts](#concepts)
     - [What is Synthetic Data?](#what-is-synthetic-data)
     - [How does MOSTLY AI protect data privacy?](#how-does-mostly-ai-protect-data-privacy)
@@ -113,6 +111,38 @@ The methods and endpoints of the SDK are [extensively documented](https://api-do
 
 ### MOSTLY AI Model Context Protocol (MCP) Server
 
+> Configuration instructions and more information, including the entire MCP server codebase, is available in the public [MCP server repository](https://github.com/mostly-ai/mostlyai-mcp-server).
+
+MOSTLY AI supports a dedicated [MCP server](https://modelcontextprotocol.io/docs/getting-started/intro) to connect to LLM agents and tools.
+
+We recommend using Anthropic's [MCP Inspector](https://modelcontextprotocol.io/legacy/tools/inspector) tool for testing and debugging.
+
+Available tools are enumerated here:
+
+| Tool                          | Description                                                               |
+|-------------------------------|---------------------------------------------------------------------------|
+| `get_platform_info`           | retrieve information about the platform                                   |
+| `get_user_info`               | retrieve information about the current user                               |
+| `get_models`                  | retrieve a list of available models of a specific type                    |
+| `get_computes`                | retrieve a list of available compute resources for tasks                  |
+| `list_connectors`             | list all available connectors                                             |
+| `get_connector`               | get details of a specific connector                                       |
+| `create_connector`            | create a new connector and optionally test the connection                 |
+| `get_connector_locations`     | list available locations (schemas, tables, buckets, etc.) for a connector |
+| `get_connector_schema`        | get the schema of a table or file at a connector location                  |
+| `read_connector_data`         | read data from a connector location                                       |
+| `write_connector_data`        | write data to a connector location (currently disabled)                   |
+| `query_connector`             | execute a read-only SQL query against a connector's data source            |
+| `list_generators`             | list all available generators                                             |
+| `get_generator`               | get details of a specific generator                                       |
+| `poll_generator_progress`     | poll progress of a generator training job                                 |
+| `train_generator`             | train a new generator with provided data or configuration                 |
+| `clone_generator`             | clone an existing generator                                               |
+| `get_synthetic_dataset`       | get details of a specific synthetic dataset                               |
+| `poll_synthetic_dataset_progress` | poll progress of a synthetic dataset generation job                  |
+| `generate_synthetic_dataset`  | generate a synthetic dataset using a generator                            |
+| `list_synthetic_datasets`     | list all available synthetic datasets                                     |
+| `probe_generator`             | probe a generator for a new synthetic dataset (quick sample)              |
 
 
 ### MOSTLY Synthetic Mock
