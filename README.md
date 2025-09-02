@@ -10,9 +10,11 @@
     - [How does MOSTLY AI protect data privacy?](#how-does-mostly-ai-protect-data-privacy)
 3. [Getting Started with MOSTLY AI](#getting-started-with-mostly-ai)
     - [Platform](#platform)
+    - [AWS Installation Guide](#aws-installation-guide)
     - [Synthetic Data SDK](#synthetic-data-sdk)
     - [MOSTLY AI Model Context Protocol (MCP) Server](#mostly-ai-model-context-protocol-mcp-server)
-    - [MOSTLY Mock](#mostly-mock) 
+    - [MOSTLY Mock](#mostly-mock)
+    - [Synthetic Data Quality Assurance](#synthetic-data-quality-assurance)
 4. [Tutorials](#tutorials)
 
 ## Introduction
@@ -87,6 +89,12 @@ The best place to get started is the [MOSTLY AI platform](http://app.mostly.ai) 
 > For more information on using the platform effectively, consider the [MOSTLY AI Docs](https://mostly.ai/docs/).
 
 Use the platform to chat with the MOSTLY AI Assistant, who can help you train generators, create synthetic datasets, and configure connectors using natural language prompting. Chatting with the Assistant is the best place to start learning about using MOSTLY AI to create synthetic data.
+
+### AWS Installation Guide
+
+MOSTLY AI can be installed on your own enterprise infrastructure according to the [AWS Installation Guide](https://github.com/mostly-ai/aws-marketplace).
+
+Check out the [MOSTLY AI Data Intelligence Platform AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc) for pricing and purchase instructions.
 
 ### Synthetic Data SDK
 
@@ -178,6 +186,46 @@ Mock data is differentiated from synthetic data in that mock data is created ent
 Mock data is helpful for testing data model structure and shape in a development or staging environment, when real-world subject data may not be available or the underlying data model is subject to rapid iteration and change.
 
 The [MOSTLY Synthetic Mock repository](https://github.com/mostly-ai/mostlyai-mock?tab=readme-ov-file#synthetic-mock-data-) supports natural language prompting and a declarative syntax to ensure that the generated mock data meets your exact requirements.
+
+### Synthetic Data Quality Assurance
+
+The MOSTLY AI Synthetic Data QA library generates HTML reports and metrics to evaluate synthetic data quality. It compares synthetic vs. original data for accuracy, similarity, and distances, supports contextual and sequential data, allows customization and sampling controls, and returns both a report file and structured metrics.
+
+Available metrics are enumerated in the following table:
+
+# MOSTLY AI QA Metrics
+
+| Category     | Parameter                               | Description                                                                                                      |
+|--------------|-----------------------------------------|------------------------------------------------------------------------------------------------------------------|
+| **Accuracy** | `accuracy`                              | Overall accuracy of synthetic data vs. training/holdout distributions.                                            |
+|              | `overall`                               | Overall accuracy averaged across univariate, bivariate, trivariate, and coherence metrics.                        |
+|              | `univariate`                            | Accuracy of discretized univariate distributions.                                                                |
+|              | `bivariate`                             | Accuracy of discretized bivariate distributions.                                                                 |
+|              | `trivariate`                            | Accuracy of discretized trivariate distributions.                                                                |
+|              | `coherence`                             | Accuracy of auto-correlation distributions (sequential data only).                                               |
+|              | `overall_max`                           | Expected overall accuracy of a same-sized holdout (reference).                                                    |
+|              | `univariate_max`                        | Expected univariate accuracy of a same-sized holdout (reference).                                                 |
+|              | `bivariate_max`                         | Expected bivariate accuracy of a same-sized holdout (reference).                                                  |
+|              | `trivariate_max`                        | Expected trivariate accuracy of a same-sized holdout (reference).                                                 |
+|              | `coherence_max`                         | Expected coherence accuracy of a same-sized holdout (reference).                                                  |
+| **Similarity** | `similarity`                          | Measures similarity of full joint distributions in embedding space.                                               |
+|              | `cosine_similarity_training_synthetic`  | Cosine similarity between training and synthetic centroids.                                                       |
+|              | `cosine_similarity_training_holdout`    | Cosine similarity between training and holdout centroids (reference).                                             |
+|              | `discriminator_auc_training_synthetic`  | Cross-validated AUC of a model distinguishing training vs. synthetic (ideal ≈ 0.5).                               |
+|              | `discriminator_auc_training_holdout`    | Cross-validated AUC of a model distinguishing training vs. holdout (reference).                                   |
+| **Distances** | `distances`                            | Nearest-neighbor distances in encoded space, assessing novelty/privacy.                                           |
+|              | `ims_training`                          | Share of synthetic samples identical to training samples.                                                         |
+|              | `ims_holdout`                           | Share of synthetic samples identical to holdout samples (reference).                                              |
+|              | `ims_trn_hol`                           | Share of training samples identical to holdout samples (reference).                                               |
+|              | `dcr_training`                          | Avg. nearest-neighbor distance between synthetic and training samples.                                            |
+|              | `dcr_holdout`                           | Avg. nearest-neighbor distance between synthetic and holdout samples (reference).                                 |
+|              | `dcr_trn_hol`                           | Avg. nearest-neighbor distance between training and holdout samples (reference).                                  |
+|              | `dcr_share`                             | Share of synthetic samples closer to training than holdout (should not be >> 50%).                                |
+|              | `nndr_training`                         | 10th smallest nearest-neighbor distance ratio (synthetic vs. training).                                           |
+|              | `nndr_holdout`                          | 10th smallest nearest-neighbor distance ratio (synthetic vs. holdout).                                            |
+|              | `nndr_trn_hol`                          | 10th smallest nearest-neighbor distance ratio (training vs. holdout).                                             |
+
+
 
 ## Tutorials
 
