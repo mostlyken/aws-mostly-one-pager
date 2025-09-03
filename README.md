@@ -121,8 +121,6 @@ MOSTLY AI is a powerful platform that supports a range of functionalities. These
 
 ![MOSTLY AI App homepage](./images/assistant-screen.webp)
 
-*The MOSTLY AI platform homepage*
-
 The best place to get started is the [MOSTLY AI platform](http://app.mostly.ai) but we support a number a complementary tools to ensure that you have access to the most realistic mock or synthetic data possible.
 
 > For more information on using the platform effectively, consider the [MOSTLY AI Docs](https://mostly.ai/docs/).
