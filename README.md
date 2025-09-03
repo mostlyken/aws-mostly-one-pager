@@ -7,7 +7,13 @@
     - [The Power of Partnership](#the-power-of-partnership)
 2. [Concepts](#concepts)
     - [What is Synthetic Data?](#what-is-synthetic-data)
-    - [How does MOSTLY AI protect data privacy?](#how-does-mostly-ai-protect-data-privacy)
+    - [What is Mock Data?](#what-is-mock-data)
+    - [Use cases for Synthetic Data and Mock Data](#use-cases-for-synthetic-data-and-mock-data)
+        - [AI training](#ai-training)
+        - [Analytics](#analytics)
+        - [Testing and QA](#testing-and-qa)
+        - [Demos and prototypes](#demos-and-prototypes)
+        - [Explainable AI](#explainable-ai)
 3. [Getting Started with MOSTLY AI](#getting-started-with-mostly-ai)
     - [Platform](#platform)
     - [AWS Installation Guide](#aws-installation-guide)
@@ -16,18 +22,27 @@
     - [MOSTLY Mock](#mostly-mock)
     - [Synthetic Data Quality Assurance](#synthetic-data-quality-assurance)
 4. [Tutorials](#tutorials)
+5. [Contact](#contact)
+
+-----
 
 ## Introduction
 
-MOSTLY AI and AWS have announced a strategic partnership to bring world-class synthetic data to everyone.
+[![Go synthetic](./images/go-synthetic.webp)](https://www.youtube.com/watch?v=ax9jr5zFNQU)
 
-With the synthetic and mock data generation abilities of MOSTLY AI and the infrastructure and reach of AWS, we're joining forces to empower every organization to make the most of their data without sacrificing privacy or utility.
+MOSTLY AI and AWS have announced a strategic partnership to bring world-class synthetic data to everyone. This collaboration combines the enterprise-scale synthetic and mock data generation capabilities of MOSTLY AI with the infrastructure, reach, and services of AWS, enabling organizations to make the most of their data without sacrificing privacy or utility.  
 
-[![Watch on YouTube!](./images/aws-intro-image.png)](https://www.youtube.com/watch?v=961lTRpUPuk)
+With over 8 years of experience and deep expertise in serving highly regulated industries such as financial services and healthcare, MOSTLY AI brings proven knowledge and trust to this partnership. Together with AWS, we are delivering a solution that can be used across an entire organization, treating synthetic data as a first-class citizen that coexists with real data to strengthen data foundations. With MOSTLY AI and AWS, enterprises gain the ability to safely scale analytics, AI training, and innovation, while ensuring privacy and compliance remain intact.
 
-*Watch the launch video on the Data Democratization Podcast on YouTube* 
+The MOSTLY AI platform is now available directly on AWS Marketplace and integrates with Amazon SageMaker, including open-source model support for TabularARGN, providing a seamless path for customers to adopt synthetic data at scale. Through our joint collaboration with the [SageMaker](https://aws.amazon.com/sagemaker/) and [Clean Room](https://aws.amazon.com/clean-rooms/) teams, we are offering preferential pricing, enhanced interoperability, and new capabilities that make synthetic data accessible and impactful for enterprise and public sector customers alike.  
+
+This partnership reflects the rising demand for synthetic data across sectors such as financial services, healthcare, and government. Customers have been proactively reaching out for support, recognizing synthetic data as essential for building robust data foundations and enabling agentic AI systems. By uniting technology and strategy, AWS and MOSTLY AI are working hand in hand with joint customers to address these needs and unlock new opportunities.  
+
+> For further context on the potential of synthetic data as a cornerstone of AI-ready data strategies, see the recent research paper, [*Synthetic Data as a Catalyst for Agentic AI*](https://arxiv.org/abs/2501.12012).  
 
 ### Why MOSTLY AI?
+
+![Why MOSTLY AI?](./images/mostly-ai-logo.webp)
 
 MOSTLY AI addresses one of the biggest challenges in enterprise data today: the fact that 90% of valuable data is personal, privacy-sensitive, and therefore difficult to access and use. 
 
@@ -37,6 +52,8 @@ MOSTLY AI bridges this gap by combining privacy-preserving synthetic data with A
 
 ### The Power of Partnership
 
+[![Watch on YouTube!](./images/aws-intro-image.png)](https://www.youtube.com/watch?v=961lTRpUPuk)
+
 Enterprises are increasingly recognizing that their most valuable data asset, structured customer data, often remains inaccessible due to privacy and compliance constraints. 
 
 This limitation creates barriers for AI training, proof-of-concepts, cloud migration, and secure data collaboration. Unlocking this data safely is critical to enabling enterprise AI adoption at scale.
@@ -45,27 +62,49 @@ To address this challenge, AWS is partnering with MOSTLY AI, the industry leader
 
 By applying advanced generative AI techniques such as GANs and VAEs, MOSTLY AI’s technology creates fully anonymous yet highly representative synthetic datasets for both tabular and time-series data. This allows enterprises to safely utilize their sensitive data assets while ensuring compliance with the strictest regulatory requirements.
 
+-----
+
 ## Concepts
 
-### What is synthetic data?
+### What is Synthetic Data?
 
-![What is synthetic data?](./images/tabular-synthetic-data.svg)
+[![Unlock Data Access at Scale with Synthetic Data](./images/aws-synthetic-data.webp)](https://www.youtube.com/watch?v=J5n6AllAfJk)
 
-Synthetic data is artificial data that retains the characteristics of real-world data. However, a key feature of synthetic data is that it does not directly correspond to real-world entities like people, organizations, institutions, and others contained in the original dataset.
+[Synthetic data](https://mostly.ai/synthetic-data-basics) is artificial data generated by AI models trained on real-world datasets. Unlike traditional anonymization techniques such as masking or pseudonymization, which may still leave traces of personal data, synthetic data is created entirely from scratch. The process involves learning the patterns, correlations, and statistical properties of the source data, and then generating brand-new records that preserve these characteristics while containing no personally identifiable information (PII). This makes synthetic data a powerful, privacy-preserving stand-in for real data.
 
-### How does MOSTLY AI protect data privacy?
+When generated effectively, synthetic data is statistically identical to the original dataset, delivering a high level of utility and acting as a perfect proxy, with the same insights and correlations but none of the privacy risks associated with legacy obfuscation techniques.
 
-![](./images/original-data-no-relation-synthetic-data.svg)
+MOSTLY AI [protects privacy](https://docs.mostly.ai/concepts/privacy-protection) by training generative AI models on real data to learn patterns and distributions, then generating new records from scratch with no one-to-one link to original data. This prevents re-identification, preserves statistical integrity, and ensures safe, compliant data use.
 
-MOSTLY AI enables enterprises to unlock the utility of their data while preserving privacy. Unlike traditional anonymization, which alters or masks original records, MOSTLY AI uses the data only to train generative AI models. These models learn statistical patterns, distributions, and correlations, then generate new synthetic datasets from scratch. Because the synthetic data has no 1:1 relationship to the original records, it eliminates direct re-identification risks.
+### What is Mock Data?
 
-Synthetic records are created through random draws against the trained model, ensuring realistic distributions across variables and preserving relationships between columns.
+[Mock data](https://mostly.ai/synthetic-data-dictionary/mock-data) is artificial data that mimics the structure of real datasets but does not reproduce their actual statistical properties or correlations. It is often used for testing, development, and demonstrations where realistic values are helpful but privacy and compliance requirements make the use of real data impractical or statistical properties and correlations are irrelevant.
 
-Privacy protection is reinforced through safeguards against model overfitting, ensuring the AI learns only general patterns rather than memorizing sensitive details. MOSTLY AI’s training objectives are explicitly designed to prevent the reproduction of individual-level information.
+MOSTLY AI takes mock data generation further by providing [AI-powered tools](#mostly-synthetic-mock) that create complex, multi-table datasets with referential integrity and plausible values across fields according to your defined schema. 
 
-Together, these mechanisms ensure synthetic data remains both useful and safe. Organizations can maintain the statistical integrity of their datasets, enable large-scale data access, and accelerate AI development — all while ensuring compliance with the strictest privacy standards.
+### Use cases for Synthetic Data and Mock Data
 
-> More information about these techniques is available in the [MOSTLY AI documentation](https://docs.mostly.ai/concepts/privacy-protection).
+#### AI training
+
+Synthetic data allows teams to train and evaluate machine learning models without exposing sensitive information. MOSTLY AI ensures this data remains faithful to real-world patterns while preserving privacy, making it safe for large-scale model development.
+
+#### Analytics
+
+Exploratory analysis and business intelligence often get slowed down by the regulatory approval processes. With MOSTLY AI, teams can freely explore synthetic datasets that mirror the original, enabling rapid insights without compliance barriers.
+
+#### Testing and QA
+
+Developers and QA engineers need realistic data to test software, but production data is risky to use. MOSTLY AI generates safe, statistically accurate datasets that populate staging environments, ensuring reliable tests without exposing PII. Mock data can serve as a lightweight alternative in early development stages, where format compliance and coverage of edge cases matter more than exact statistical fidelity.  
+
+#### Demos and prototypes
+
+Product teams often showcase new tools using sensitive data, which risks privacy breaches. MOSTLY AI provides lifelike synthetic data that lets teams build, demo, and prototype products without leaking confidential information. Mock data is also ideal for fast, safe demos where realism is secondary to quickly showing functionality in action.  
+
+#### Explainable AI
+
+Governing AI systems requires stress-testing models on edge cases, outliers, and diverse cohorts. MOSTLY AI can generate synthetic datasets tailored to these scenarios, helping organizations validate fairness, robustness, and compliance.
+
+-----
 
 ## Getting started with MOSTLY AI
 
@@ -123,35 +162,9 @@ The methods and endpoints of the SDK are [extensively documented](https://api-do
 
 MOSTLY AI supports a dedicated [MCP server](https://modelcontextprotocol.io/docs/getting-started/intro) to connect to LLM agents and tools.
 
+The MCP server provides a set of tools that let users connect to data sources, inspect their schemas, query and read data, and then train, manage, and generate synthetic datasets with MOSTLY AI’s platform. It also includes utilities for managing connectors, generators, compute resources, and monitoring the progress of training or data generation jobs. For details on each tool, users can refer to the documentation.
+
 We recommend using Anthropic's [MCP Inspector](https://modelcontextprotocol.io/legacy/tools/inspector) tool for testing and debugging.
-
-Available tools are enumerated here:
-
-| Tool                          | Description                                                               |
-|-------------------------------|---------------------------------------------------------------------------|
-| `get_platform_info`           | retrieve information about the platform                                   |
-| `get_user_info`               | retrieve information about the current user                               |
-| `get_models`                  | retrieve a list of available models of a specific type                    |
-| `get_computes`                | retrieve a list of available compute resources for tasks                  |
-| `list_connectors`             | list all available connectors                                             |
-| `get_connector`               | get details of a specific connector                                       |
-| `create_connector`            | create a new connector and optionally test the connection                 |
-| `get_connector_locations`     | list available locations (schemas, tables, buckets, etc.) for a connector |
-| `get_connector_schema`        | get the schema of a table or file at a connector location                  |
-| `read_connector_data`         | read data from a connector location                                       |
-| `write_connector_data`        | write data to a connector location (currently disabled)                   |
-| `query_connector`             | execute a read-only SQL query against a connector's data source            |
-| `list_generators`             | list all available generators                                             |
-| `get_generator`               | get details of a specific generator                                       |
-| `poll_generator_progress`     | poll progress of a generator training job                                 |
-| `train_generator`             | train a new generator with provided data or configuration                 |
-| `clone_generator`             | clone an existing generator                                               |
-| `get_synthetic_dataset`       | get details of a specific synthetic dataset                               |
-| `poll_synthetic_dataset_progress` | poll progress of a synthetic dataset generation job                  |
-| `generate_synthetic_dataset`  | generate a synthetic dataset using a generator                            |
-| `list_synthetic_datasets`     | list all available synthetic datasets                                     |
-| `probe_generator`             | probe a generator for a new synthetic dataset (quick sample)              |
-
 
 ### MOSTLY Synthetic Mock
 
@@ -189,43 +202,15 @@ The [MOSTLY Synthetic Mock repository](https://github.com/mostly-ai/mostlyai-moc
 
 ### Synthetic Data Quality Assurance
 
-The MOSTLY AI Synthetic Data QA library generates HTML reports and metrics to evaluate synthetic data quality. It compares synthetic vs. original data for accuracy, similarity, and distances, supports contextual and sequential data, allows customization and sampling controls, and returns both a report file and structured metrics.
+![Preview report generated by the Synthetic Data Quality Assurance library](./images/mostly-ai-qa-preview.webp)
 
-Available metrics are enumerated in the following table:
+The MOSTLY AI Synthetic Data QA library generates HTML reports with metrics to evaluate synthetic data quality. It compares synthetic vs. original data for accuracy, similarity, and distances, supports contextual and sequential data, allows customization and sampling controls, and returns both a report file and structured metrics.
 
-# MOSTLY AI QA Metrics
+Accuracy measures how closely synthetic distributions match the training or holdout data, with granular metrics available for univariate, bivariate, trivariate, and sequential patterns. Similarity assesses how alike the overall joint distributions are, using methods such as cosine similarity and discriminator tests to check whether synthetic data is distinguishable from real data. Distances capture novelty and privacy by analyzing nearest-neighbor relationships, duplicate sample rates, and relative closeness between synthetic, training, and holdout datasets. Together, these metrics provide a comprehensive view of how realistic, representative, and private synthetic data is.
 
-| Category     | Parameter                               | Description                                                                                                      |
-|--------------|-----------------------------------------|------------------------------------------------------------------------------------------------------------------|
-| **Accuracy** | `accuracy`                              | Overall accuracy of synthetic data vs. training/holdout distributions.                                            |
-|              | `overall`                               | Overall accuracy averaged across univariate, bivariate, trivariate, and coherence metrics.                        |
-|              | `univariate`                            | Accuracy of discretized univariate distributions.                                                                |
-|              | `bivariate`                             | Accuracy of discretized bivariate distributions.                                                                 |
-|              | `trivariate`                            | Accuracy of discretized trivariate distributions.                                                                |
-|              | `coherence`                             | Accuracy of auto-correlation distributions (sequential data only).                                               |
-|              | `overall_max`                           | Expected overall accuracy of a same-sized holdout (reference).                                                    |
-|              | `univariate_max`                        | Expected univariate accuracy of a same-sized holdout (reference).                                                 |
-|              | `bivariate_max`                         | Expected bivariate accuracy of a same-sized holdout (reference).                                                  |
-|              | `trivariate_max`                        | Expected trivariate accuracy of a same-sized holdout (reference).                                                 |
-|              | `coherence_max`                         | Expected coherence accuracy of a same-sized holdout (reference).                                                  |
-| **Similarity** | `similarity`                          | Measures similarity of full joint distributions in embedding space.                                               |
-|              | `cosine_similarity_training_synthetic`  | Cosine similarity between training and synthetic centroids.                                                       |
-|              | `cosine_similarity_training_holdout`    | Cosine similarity between training and holdout centroids (reference).                                             |
-|              | `discriminator_auc_training_synthetic`  | Cross-validated AUC of a model distinguishing training vs. synthetic (ideal ≈ 0.5).                               |
-|              | `discriminator_auc_training_holdout`    | Cross-validated AUC of a model distinguishing training vs. holdout (reference).                                   |
-| **Distances** | `distances`                            | Nearest-neighbor distances in encoded space, assessing novelty/privacy.                                           |
-|              | `ims_training`                          | Share of synthetic samples identical to training samples.                                                         |
-|              | `ims_holdout`                           | Share of synthetic samples identical to holdout samples (reference).                                              |
-|              | `ims_trn_hol`                           | Share of training samples identical to holdout samples (reference).                                               |
-|              | `dcr_training`                          | Avg. nearest-neighbor distance between synthetic and training samples.                                            |
-|              | `dcr_holdout`                           | Avg. nearest-neighbor distance between synthetic and holdout samples (reference).                                 |
-|              | `dcr_trn_hol`                           | Avg. nearest-neighbor distance between training and holdout samples (reference).                                  |
-|              | `dcr_share`                             | Share of synthetic samples closer to training than holdout (should not be >> 50%).                                |
-|              | `nndr_training`                         | 10th smallest nearest-neighbor distance ratio (synthetic vs. training).                                           |
-|              | `nndr_holdout`                          | 10th smallest nearest-neighbor distance ratio (synthetic vs. holdout).                                            |
-|              | `nndr_trn_hol`                          | 10th smallest nearest-neighbor distance ratio (training vs. holdout).                                             |
+> More detailed information on the Synthetic Data Quality Assurance library can be found in the [public repository](https://github.com/mostly-ai/mostlyai-qa).
 
-
+-----
 
 ## Tutorials
 
@@ -235,19 +220,25 @@ These tutorials provide extensive instructions for all levels of MOSTLY AI users
 
 | Description                                                     | Colab Link                                                                                                                                                                                                                       | Notebook Link                                                                                                              |
 | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Getting started with the SDK                                    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/getting-started/getting-started.ipynb)               | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/getting-started/getting-started.ipynb)       |
-| Validate synthetic data via Train-Synthetic-Test-Real           | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/train-synthetic-test-real/TSTR.ipynb)                | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/train-synthetic-test-real/TSTR.ipynb)        |
-| Explore the size vs. accuracy trade-off for synthetic data      | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/size-vs-accuracy/size-vs-accuracy.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/size-vs-accuracy/size-vs-accuracy.ipynb)     |
-| Differentially private synthetic data                           | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/differential-privacy/differential-privacy.ipynb)     | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/differential-privacy/differential-privacy.ipynb) |
-| Rebalance synthetic datasets for data augmentation              | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/rebalancing/rebalancing.ipynb)                       | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/rebalancing/rebalancing.ipynb)               |
-| Conditionally simulate synthetic (geo) data                     | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/conditional-generation/conditional-generation.ipynb) | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/conditional-generation/conditional-generation.ipynb) |
-| Explain AI with synthetic data                                  | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/explainable-ai/explainable-ai.ipynb)                 | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/explainable-ai/explainable-ai.ipynb)         |
-| Generate fair synthetic data                                    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/fairness/fairness.ipynb)                             | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/fairness/fairness.ipynb)                     |
-| Generate synthetic text via a fast LSTM model trained from scratch | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-text-lstm/synthetic-text-lstm.ipynb)       | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/synthetic-text-lstm/synthetic-text-lstm.ipynb) |
-| Generate synthetic text via a pre-trained large language model  | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-text-llm/synthetic-text-llm.ipynb)         | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/synthetic-text-llm/synthetic-text-llm.ipynb) |
-| Perform multi-table synthesis                                   | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/multi-table/multi-table.ipynb)                       | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/multi-table/multi-table.ipynb)               |
-| Analyze star-schema correlations                                | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/star-schema-correlations/star-schema-correlations.ipynb) | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/star-schema-correlations/star-schema-correlations.ipynb) |
-| Develop a fake or real discriminator with synthetic data        | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/fake-or-real/fake-or-real.ipynb)                     | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/fake-or-real/fake-or-real.ipynb)             |
-| Close gaps in your data with smart imputation                   | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/smart-imputation/smart-imputation.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/smart-imputation/smart-imputation.ipynb)     |
-| Calculate accuracy and privacy metrics for quality assurance    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/quality-assurance/quality-assurance.ipynb)           | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/quality-assurance/quality-assurance.ipynb)   |
-| Enrich sensitive data with LLMs using synthetic replicas        | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-enrich/synthetic-enrich.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/edit/main/docs/tutorials/synthetic-enrich/synthetic-enrich.ipynb)     |
+| Getting started with the SDK                                    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/getting-started/getting-started.ipynb)               | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/getting-started/getting-started.ipynb)       |
+| Validate synthetic data via Train-Synthetic-Test-Real           | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/train-synthetic-test-real/TSTR.ipynb)                | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/train-synthetic-test-real/TSTR.ipynb)        |
+| Explore the size vs. accuracy trade-off for synthetic data      | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/size-vs-accuracy/size-vs-accuracy.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/size-vs-accuracy/size-vs-accuracy.ipynb)     |
+| Differentially private synthetic data                           | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/differential-privacy/differential-privacy.ipynb)     | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/differential-privacy/differential-privacy.ipynb) |
+| Rebalance synthetic datasets for data augmentation              | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/rebalancing/rebalancing.ipynb)                       | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/rebalancing/rebalancing.ipynb)               |
+| Conditionally simulate synthetic (geo) data                     | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/conditional-generation/conditional-generation.ipynb) | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/conditional-generation/conditional-generation.ipynb) |
+| Explain AI with synthetic data                                  | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/explainable-ai/explainable-ai.ipynb)                 | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/explainable-ai/explainable-ai.ipynb)         |
+| Generate fair synthetic data                                    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/fairness/fairness.ipynb)                             | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/fairness/fairness.ipynb)                     |
+| Generate synthetic text via a fast LSTM model trained from scratch | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-text-lstm/synthetic-text-lstm.ipynb)       | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/synthetic-text-lstm/synthetic-text-lstm.ipynb) |
+| Generate synthetic text via a pre-trained large language model  | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-text-llm/synthetic-text-llm.ipynb)         | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/synthetic-text-llm/synthetic-text-llm.ipynb) |
+| Perform multi-table synthesis                                   | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/multi-table/multi-table.ipynb)                       | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/multi-table/multi-table.ipynb)               |
+| Analyze star-schema correlations                                | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/star-schema-correlations/star-schema-correlations.ipynb) | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/star-schema-correlations/star-schema-correlations.ipynb) |
+| Develop a fake or real discriminator with synthetic data        | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/fake-or-real/fake-or-real.ipynb)                     | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/fake-or-real/fake-or-real.ipynb)             |
+| Close gaps in your data with smart imputation                   | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/smart-imputation/smart-imputation.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/smart-imputation/smart-imputation.ipynb)     |
+| Calculate accuracy and privacy metrics for quality assurance    | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/quality-assurance/quality-assurance.ipynb)           | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/quality-assurance/quality-assurance.ipynb)   |
+| Enrich sensitive data with LLMs using synthetic replicas        | [![Run on Colab](https://img.shields.io/badge/Open%20in-Colab-blue?logo=google-colab)](https://colab.research.google.com/github/mostly-ai/mostlyai/blob/main/docs/tutorials/synthetic-enrich/synthetic-enrich.ipynb)             | [View Notebook](https://github.com/mostly-ai/mostlyai/tree/main/docs/tutorials/synthetic-enrich/synthetic-enrich.ipynb)     |
+
+-----
+
+## Contact
+
+For more information about using MOSTLY AI on AWS, contact [AWS](mailto:fahaddad@amazon.co.uk) or [MOSTLY AI Support](mailto:support@mostly.ai)
