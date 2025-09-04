@@ -124,7 +124,7 @@ MOSTLY AI is a powerful platform that supports a range of functionalities. These
 
 ### Platform
 
-![MOSTLY AI App homepage](./images/assistant-screen.webp)
+![MOSTLY AI App homepage](./images/mostly-platform-preview.png)
 
 The best place to get started is the [MOSTLY AI platform](http://app.mostly.ai) but we support a number a complementary tools to ensure that you have access to the most realistic mock or synthetic data possible. You can deploy the MOSTLY AI Platform [directly from the AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc).
 
