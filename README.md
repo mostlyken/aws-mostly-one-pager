@@ -3,11 +3,13 @@
 ## Contents
 
 1. [Introduction](#introduction)
-    - [The Power of Partnership](#the-power-of-partnership)
+    - [Making the most of Synthetic Data](#making-the-most-of-synthetic-data)
     - [Use cases for Synthetic Data and Mock Data](#use-cases-for-synthetic-data-and-mock-data)
         - [AI training](#ai-training)
         - [Analytics](#analytics)
         - [Testing and QA](#testing-and-qa)
+        - [External data sharing](#external-data-sharing)
+        - [Cloud migration](#cloud-migration)
         - [Demos and prototypes](#demos-and-prototypes)
         - [Explainable AI](#explainable-ai)
 2. [Concepts](#concepts)
@@ -15,7 +17,7 @@
     - [What is Mock Data?](#what-is-mock-data)
 3. [Getting Started with MOSTLY AI](#getting-started-with-mostly-ai)
     - [Platform](#platform)
-    - [AWS Installation Guide](#aws-installation-guide)
+        - [AWS Installation Guide](#aws-installation-guide)
     - [Synthetic Data SDK](#synthetic-data-sdk)
     - [MOSTLY AI Model Context Protocol (MCP) Server](#mostly-ai-model-context-protocol-mcp-server)
     - [MOSTLY Mock](#mostly-mock)
@@ -29,17 +31,17 @@
 
 ![AWS X MOSTLY](./images/awsxmostlyai_read_me.png)
 
-MOSTLY AI and AWS have announced a strategic partnership to bring world-class synthetic data to everyone. This collaboration combines the enterprise-scale synthetic and mock data generation capabilities of MOSTLY AI with the infrastructure, reach, and services of AWS, enabling organizations to make the most of their data without sacrificing privacy or utility.  
+MOSTLY AI and AWS have announced a strategic partnership to bring world-class synthetic data to everyone. This collaboration combines the enterprise-scale synthetic and mock data generation capabilities of MOSTLY AI with the infrastructure, reach, and services of AWS, enabling organizations to make the most of their data without sacrificing privacy or utility.
+
+Our partnership reflects the rising demand from AWS customers for synthetic data across sectors such as financial services, telecommunications, healthcare and government, recognizing synthetic data as essential for building robust data foundations and enabling agentic AI systems. By uniting technology and strategy, AWS and MOSTLY AI are working hand in hand with joint customers to address these needs and unlock new opportunities.
 
 With over 8 years of experience and deep expertise in serving highly regulated industries, MOSTLY AI is the only enterprise grade open source synthetic data solution on the market today. Together with AWS, we are delivering a solution that can be used across an entire organization, treating synthetic data as a first-class citizen that coexists with real data to strengthen data foundations. With MOSTLY AI and AWS, enterprises gain the ability to safely scale analytics, AI training, and innovation, while ensuring privacy and compliance remain intact.
 
-The MOSTLY AI platform is now available directly on AWS Marketplace and integrates with Amazon SageMaker, including open-source model support for TabularARGN, providing a seamless path for customers to adopt synthetic data at scale. Through our joint collaboration with the [SageMaker](https://aws.amazon.com/sagemaker/) and [Clean Room](https://aws.amazon.com/clean-rooms/) teams, we are offering preferential pricing, enhanced interoperability, and new capabilities that make synthetic data accessible and impactful for enterprise and public sector customers alike.  
+The MOSTLY AI platform is now available [directly on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc) and is integrated with [Amazon SageMaker](https://aws.amazon.com/sagemaker/) and [Amazon Clean Rooms](https://aws.amazon.com/clean-rooms/), including open-source model support for TabularARGN, providing a seamless path for customers to adopt synthetic data at scale.
 
-This partnership reflects the rising demand for synthetic data across sectors such as financial services and government. Customers have been proactively reaching out for support, recognizing synthetic data as essential for building robust data foundations and enabling agentic AI systems. By uniting technology and strategy, AWS and MOSTLY AI are working hand in hand with joint customers to address these needs and unlock new opportunities.  
+> For further context on the potential of synthetic data as a cornerstone of AI-ready data strategies, see the recent research paper, [*TabularARGN: A Flexible and Efficient Auto-Regressive Framework for Generating High-Fidelity Synthetic Data*](https://arxiv.org/abs/2501.12012).  
 
-> For further context on the potential of synthetic data as a cornerstone of AI-ready data strategies, see the recent research paper, [*Synthetic Data as a Catalyst for Agentic AI*](https://arxiv.org/abs/2501.12012).  
-
-### The Power of Partnership
+### Making the most of Synthetic Data
 
 [![Watch on YouTube!](./images/aws-intro-image.png)](https://www.youtube.com/watch?v=961lTRpUPuk)
 
@@ -49,7 +51,7 @@ This limitation creates barriers for AI training, proof-of-concepts, cloud migra
 
 To address this challenge, AWS is partnering with MOSTLY AI, the industry leader in privacy-preserving structured synthetic data. 
 
-By applying advanced generative AI techniques such as GANs and VAEs, MOSTLY AI’s technology creates fully anonymous yet highly representative synthetic datasets for both tabular and time-series data. This allows enterprises to safely utilize their sensitive data assets while ensuring compliance with the strictest regulatory requirements.
+By applying an advanced auto-regressive architecture, MOSTLY AI’s technology creates fully anonymous yet highly representative synthetic datasets for both tabular and time-series data. This allows enterprises to safely utilize their sensitive data assets while ensuring compliance with the strictest regulatory requirements.
 
 ### Use cases for Synthetic Data and Mock Data
 
@@ -59,7 +61,15 @@ Synthetic data allows teams to train and evaluate machine learning models withou
 
 #### Analytics
 
-Exploratory analysis and business intelligence often get slowed down by the regulatory approval processes. With MOSTLY AI, teams can freely explore synthetic datasets that mirror the original, enabling rapid insights without compliance barriers.
+Exploratory analysis and business intelligence often get slowed down by the internal approval processes and overburdened data engineers and analytics teams. With MOSTLY AI, teams can freely explore synthetic datasets that mirror the original, enabling rapid insights without compliance barriers.
+
+#### External data sharing
+
+Organizations often need to share data with partners, vendors, or regulators, but direct access to sensitive information is risky. MOSTLY AI enables secure collaboration by generating curated synthetic datasets that preserve statistical value while protecting privacy. This allows teams to exchange meaningful data externally without exposing confidential records.
+
+#### Cloud migration
+
+Moving sensitive data to the cloud can raise compliance and security concerns. With MOSTLY AI, organizations can generate privacy-safe synthetic datasets that mirror production data, enabling smooth migration, validation, and testing of cloud environments without exposing regulated information.
 
 #### Testing and QA
 
@@ -81,7 +91,7 @@ Governing AI systems requires stress-testing models on edge cases, outliers, and
 
 [![](./images/aws-synthetic-data.webp)](https://www.youtube.com/watch?v=J5n6AllAfJk)
 
-[Synthetic data](https://mostly.ai/synthetic-data-basics) is artificial data generated by AI models trained on real-world datasets. Unlike traditional anonymization techniques such as masking or pseudonymization, which may still leave traces of personal data, synthetic data is created entirely from scratch. The process involves learning the patterns, correlations, and statistical properties of the source data, and then generating brand-new records that preserve these characteristics while containing no personally identifiable information (PII). This makes synthetic data a powerful, privacy-preserving stand-in for real data.
+[Synthetic data](https://mostly.ai/synthetic-data-basics) is artificial data generated by AI models trained on real-world datasets. Unlike traditional anonymization techniques such as masking or pseudonymization, which may still leave traces of personal data, synthetic data is created entirely from scratch. The process involves learning the patterns, correlations, and statistical properties of the source data, and then generating brand-new records that preserve these characteristics while containing no privacy-sensitive data. This makes synthetic data a powerful, privacy-preserving stand-in for real data.
 
 When generated effectively, synthetic data is statistically identical to the original dataset, delivering a high level of utility and acting as a perfect proxy, with the same insights and correlations but none of the privacy risks associated with legacy obfuscation techniques.
 
@@ -97,13 +107,13 @@ MOSTLY AI takes mock data generation further by providing [AI-powered tools](#mo
 
 ## Getting started with MOSTLY AI
 
-MOSTLY AI addresses one of the biggest challenges in enterprise data today: the fact that 90% of valuable data is personal, privacy-sensitive, and therefore difficult to access and use. 
+MOSTLY AI addresses one of the biggest challenges in enterprise data today: the fact that the vast majority of data of valuable data is personal, privacy-sensitive, and therefore difficult to access and use. 
 
 As AI and LLMs trained on public data reach saturation, the next phase of innovation will be driven by generative AI applied to proprietary datasets. Yet, most employees lack both the access to granular personal data and the skills to freely analyze and model it. 
 
 MOSTLY AI bridges this gap by combining privacy-preserving synthetic data with AI assistance, enabling organizations to safely unlock and operationalize their most valuable data assets. Together with AWS, MOSTLY AI is bringing this capability to market at scale.
 
-We've developed this guide as an overview of the MOSTLY AI platform and supporting tools.
+We've developed this guide as an overview of the MOSTLY AI platform and supporting tools that you can use with AWS, SageMaker, and Clean Rooms.
 
 MOSTLY AI is a powerful platform that supports a range of functionalities. These terms will help you understand how the get what you want from the entire MOSTLY AI ecosystem:
 
@@ -116,17 +126,17 @@ MOSTLY AI is a powerful platform that supports a range of functionalities. These
 
 ![MOSTLY AI App homepage](./images/assistant-screen.webp)
 
-The best place to get started is the [MOSTLY AI platform](http://app.mostly.ai) but we support a number a complementary tools to ensure that you have access to the most realistic mock or synthetic data possible.
+The best place to get started is the [MOSTLY AI platform](http://app.mostly.ai) but we support a number a complementary tools to ensure that you have access to the most realistic mock or synthetic data possible. You can deploy the MOSTLY AI Platform [directly from the AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc).
 
 > For more information on using the platform effectively, consider the [MOSTLY AI Docs](https://mostly.ai/docs/).
 
-Use the platform to chat with the MOSTLY AI Assistant, who can help you train generators, create synthetic datasets, and configure connectors using natural language prompting. Chatting with the Assistant is the best place to start learning about using MOSTLY AI to create synthetic data.
+Use the platform to chat with the [MOSTLY AI Assistant](https://www.youtube.com/watch?v=b1HxfurFUVk), who can help you train generators, create synthetic datasets, and configure connectors using natural language prompting. Chatting with the Assistant is the best place to start learning about using MOSTLY AI to create synthetic data.
 
-### AWS Installation Guide
+#### AWS Installation Guide
 
 MOSTLY AI can be installed on your own enterprise infrastructure according to the [AWS Installation Guide](https://github.com/mostly-ai/aws-marketplace).
 
-Check out the [MOSTLY AI Data Intelligence Platform AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc) for pricing and purchase instructions.
+Check out the [MOSTLY AI AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/prodview-clqfgzfzznfoc) for pricing and purchase instructions and the [deployment video](https://www.youtube.com/watch?v=4MUhPXpHifM) for a quick overview of the installation process.
 
 ### Synthetic Data SDK
 
@@ -187,9 +197,9 @@ df = mock.sample(
 )
 ```
 
-Mock data is differentiated from synthetic data in that mock data is created entirely from scratch, with no underlying subject data upon which to model. You can use mock data to expand an existing subject dataset if you wish, but it is not required to have any data to start the process.
+Mock data is different from synthetic data in that mock data is created entirely from scratch, with no real data to be modeled on. You can use mock data to expand an existing dataset if you wish, but it is not required to have any data to start the process.
 
-Mock data is helpful for testing data model structure and shape in a development or staging environment, when real-world subject data may not be available or the underlying data model is subject to rapid iteration and change.
+Mock data is helpful for testing data model structure and shape in a development or staging environment, when real-world data may not be available or the underlying data model is subject to rapid iteration and change.
 
 The [MOSTLY Synthetic Mock repository](https://github.com/mostly-ai/mostlyai-mock?tab=readme-ov-file#synthetic-mock-data-) supports natural language prompting and a declarative syntax to ensure that the generated mock data meets your exact requirements.
 
@@ -197,7 +207,9 @@ The [MOSTLY Synthetic Mock repository](https://github.com/mostly-ai/mostlyai-moc
 
 ![Preview report generated by the Synthetic Data Quality Assurance library](./images/mostly-ai-qa-preview.webp)
 
-The MOSTLY AI Synthetic Data QA library generates HTML reports with metrics to evaluate synthetic data quality. It compares synthetic vs. original data for accuracy, similarity, and distances, supports contextual and sequential data, allows customization and sampling controls, and returns both a report file and structured metrics.
+The MOSTLY AI Synthetic Data QA library generates HTML reports with metrics to evaluate synthetic data quality. 
+
+The two most common questions when working with synthetic data are: How accurate is it? and Is it privacy-safe? To give users confidence, MOSTLY AI provides fully automated QA metrics that make it easy to assess both quality and privacy. The library compares synthetic vs. original data for accuracy, similarity, and distances, supports contextual and sequential data, allows customization and sampling controls, and returns both a report file and structured metrics.
 
 Accuracy measures how closely synthetic distributions match the training or holdout data, with granular metrics available for univariate, bivariate, trivariate, and sequential patterns. Similarity assesses how alike the overall joint distributions are, using methods such as cosine similarity and discriminator tests to check whether synthetic data is distinguishable from real data. Distances capture novelty and privacy by analyzing nearest-neighbor relationships, duplicate sample rates, and relative closeness between synthetic, training, and holdout datasets. Together, these metrics provide a comprehensive view of how realistic, representative, and private synthetic data is.
 
@@ -234,4 +246,4 @@ These tutorials provide extensive instructions for all levels of MOSTLY AI users
 
 ## Contact
 
-For more information about using MOSTLY AI on AWS, contact [AWS](mailto:fahaddad@amazon.co.uk) or [MOSTLY AI Support](mailto:support@mostly.ai)
+For more information about using MOSTLY AI on AWS, contact Faris Haddad at AWS or [MOSTLY AI Support](mailto:support@mostly.ai)
