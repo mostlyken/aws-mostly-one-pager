@@ -43,7 +43,7 @@ The MOSTLY AI platform is now available [directly on AWS Marketplace](https://aw
 
 ### Making the most of Synthetic Data
 
-[![Watch on YouTube!](./images/aws-intro-image.png)](https://www.youtube.com/watch?v=961lTRpUPuk)
+[![Watch on YouTube!](./images/aws-intro-image.webp)](https://www.youtube.com/watch?v=961lTRpUPuk)
 
 Enterprises are increasingly recognizing that their most valuable data asset, structured customer data, often remains inaccessible due to privacy and compliance constraints. 
 
